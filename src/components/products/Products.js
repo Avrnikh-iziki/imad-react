@@ -22,7 +22,7 @@ function Products({ setTotalPages, page }) {
     useEffect(() => {
         try {
             const products = async () => {
-                const data = await fetch(`https://rich-tweed-jacket-hare.cyclic.app/products/${page}/`, {
+                const data = await fetch(`/products/${page}/`, {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
                 })
