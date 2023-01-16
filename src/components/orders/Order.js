@@ -17,7 +17,7 @@ const Order = () => {
         (product) => async () => {
             try {
                 const products = async () => {
-                    const data = await fetch(`/orders/${product._id}/`, {
+                    const data = await fetch(`https://rich-tweed-jacket-hare.cyclic.app/orders/${product._id}/`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const Order = () => {
         (product) => async () => {
             try {
                 const products = async () => {
-                    const data = await fetch(`/orders/${product._id}/`, {
+                    const data = await fetch(`https://rich-tweed-jacket-hare.cyclic.app/orders/${product._id}/`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const Order = () => {
     useEffect(() => {
         try {
             const products = async () => {
-                const data = await fetch(`/orders`, {
+                const data = await fetch(`https://rich-tweed-jacket-hare.cyclic.app/orders`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ const Signup = () => {
 
     const handlSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('/auth/', {
+        const response = await fetch('https://rich-tweed-jacket-hare.cyclic.app/auth/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

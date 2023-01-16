@@ -13,7 +13,7 @@ const Historyorders = ({ setswitsh }) => {
     useEffect(() => {
         const handlorders = async () => {
             const { id } = user
-            const response = await fetch(`/orders/order/${id}/`, {
+            const response = await fetch(`https://rich-tweed-jacket-hare.cyclic.app/orders/order/${id}/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

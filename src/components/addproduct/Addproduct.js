@@ -42,8 +42,8 @@ const Addproduct = ({ id = '', Name = "", Price = "", Description = "", Image = 
     const handlSubmit = (e) => {
         e.preventDefault()
         const fetch_url = update
-            ? `/products/edit/${id}/`
-            : `/products/addproduct/`
+            ? `https://rich-tweed-jacket-hare.cyclic.app/products/edit/${id}/`
+            : `https://rich-tweed-jacket-hare.cyclic.app/products/addproduct/`
         const method = update
             ? "PUT"
             : "POST"

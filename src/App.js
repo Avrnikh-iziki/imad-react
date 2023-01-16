@@ -25,7 +25,7 @@ function App() {
   const updateToken = useCallback(async () => {
 
     try {
-      const response = await fetch('/auth/token/refresh/',
+      const response = await fetch('https://rich-tweed-jacket-hare.cyclic.app/auth/token/refresh/',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

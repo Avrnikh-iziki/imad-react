@@ -44,7 +44,7 @@ const Cart = () => {
         order["customer_id"] = id
         order["total"] = total
         order["listorder"] = list_product
-        const response = await fetch('/orders/', {
+        const response = await fetch('https://rich-tweed-jacket-hare.cyclic.app/orders/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

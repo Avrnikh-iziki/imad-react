@@ -21,7 +21,7 @@ const Product = ({ setTotalPages, page , setswitsh , setitem}) => {
         (product) => () => {
             try {
                 const products = async () => {
-                    const data = await fetch(`/products/edit/${product._id}/`, {
+                    const data = await fetch(`https://rich-tweed-jacket-hare.cyclic.app/products/edit/${product._id}/`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const Product = ({ setTotalPages, page , setswitsh , setitem}) => {
     useEffect(() => {
         try {
             const products = async () => {
-                const data = await fetch(`/products/${page}`, {
+                const data = await fetch(`https://rich-tweed-jacket-hare.cyclic.app/products/${page}`, {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
                 })
