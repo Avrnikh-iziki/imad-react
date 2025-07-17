@@ -1,63 +1,77 @@
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { login } from '../../redux/slice';
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { login } from "../../redux/slice";
 
-
-import Alert from '../../utiles/alert/Alert';
-import './signin.css'
-
+import Alert from "../../utiles/alert/Alert";
+import "./signin.css";
+import baseUrl from "../../utiles/baseurl";
 
 const SignIn = () => {
-    window.scrollTo(0, 0)
-    const [response, setresponse] = useState({ type: "", message: "", isExist: false })
-    const dispatch = useDispatch()
-    
-    const handlSubmit = async (e) => { 
-        e.preventDefault();
-        const response = await fetch('https://rich-tweed-jacket-hare.cyclic.app/auth/token/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 'email': e.target.email.value, 'password': e.target.password.value })
-        })
-      
-        if (response.status === 200) {
-            const { access, refresh } = await response.json()
-            dispatch(login({ access, refresh }))
+  window.scrollTo(0, 0);
+  const [response, setresponse] = useState({
+    type: "",
+    message: "",
+    isExist: false,
+  });
+  const dispatch = useDispatch();
 
-            window.location = "/"
-        } else setresponse({ type: "error", message: "incorrect  username or password", isExist: true })
-    };
+  const handlSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch(`${baseUrl()}/auth/token/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: e.target.email.value,
+        password: e.target.password.value,
+      }),
+    });
 
-    return (
-        <div className='signin'>
-            <form onSubmit={handlSubmit} >
-                <input
-                    type="text"
-                    placeholder='email' 
-                    name='email'
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder='password'
-                    name='password'
-                    required
-                />
-                <div className='registration'>
-                    <button type="submit" className='registrationbutton'>Sign In</button>
-                    <div>
-                        <Link to ="/signup" >
-                           <span>Sign Up  </span> 
-                            <span> <FontAwesomeIcon icon={ faUser} /></span>
-                        </Link></div>
-                </div>
-            </form >
-            {response.isExist && <Alert setresponse={setresponse} response={response} />}
+    if (response.status === 200) {
+      const { access, refresh } = await response.json();
+      dispatch(login({ access, refresh }));
+
+      window.location = "/";
+    } else
+      setresponse({
+        type: "error",
+        message: "incorrect  username or password",
+        isExist: true,
+      });
+  };
+
+  return (
+    <div className="signin">
+      <form onSubmit={handlSubmit}>
+        <input type="text" placeholder="email" name="email" required />
+        <input
+          type="password"
+          placeholder="password"
+          name="password"
+          required
+        />
+        <div className="registration">
+          <button type="submit" className="registrationbutton">
+            Sign In
+          </button>
+          <div>
+            <Link to="/signup">
+              <span>Sign Up </span>
+              <span>
+                {" "}
+                <FontAwesomeIcon icon={faUser} />
+              </span>
+            </Link>
+          </div>
         </div>
-    )
-}
+      </form>
+      {response.isExist && (
+        <Alert setresponse={setresponse} response={response} />
+      )}
+    </div>
+  );
+};
 
-export default SignIn
+export default SignIn;
